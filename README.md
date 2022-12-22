@@ -1,1 +1,1 @@
-# SQL-examples. Create, alter,insert
+# SQL-examples. Create, alter, insert, join
