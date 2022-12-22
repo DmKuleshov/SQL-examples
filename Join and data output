@@ -1,0 +1,50 @@
+1.
+   //Вывод информации о всех контрактах, связанных с сотрудниками
+департамента «Logistic». Вывести: contract_id, employee_name
+
+select contract_id, employees.name, department_id  from executor
+join employees on employees.id = executor.tab_no
+where department_id = 2
+
+   
+2.
+   //Найти среднюю стоимость контрактов, заключенных сотрудников Ivan Ivanov.
+Вывести: среднее значение amount
+
+select avg (amount) from contract, employees
+join department on department.id = employees.department_id
+where employees.id = (1) 
+
+
+3.
+   //Найти самую часто встречающуюся локации среди всех заказчиков. Вывести:
+location, count
+
+select count (*) as count, location from customer 
+group by location
+having count (*) >=3
+
+
+4.
+   //Найти контракты одинаковой стоимости. Вывести count, amount
+
+select amount, count(amount) from contract
+group by amount
+having count(amount)>1
+
+
+5.
+   //Найти заказчика с наименьшей средней стоимостью контрактов. Вывести
+customer_name, среднее значение amount
+
+select round(avg(amount), 0), customer_name from customer, contract
+group by customer_name
+having avg(amount) < 83681
+
+6.
+   //Найти отдел, заключивший контрактов на наибольшую сумму. Вывести
+department_name
+
+select department.name, max(amount) from contract, department
+where amount = (select max(amount) from contract)
+group by department.name
